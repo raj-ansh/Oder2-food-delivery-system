@@ -81,6 +81,54 @@ class FoodAPIController extends Controller
 
         return $this->sendResponse($foods->toArray(), 'Foods retrieved successfully');
     }
+     /* Tanmaya create function start*/
+    /**
+     * Display a listing of the Food by resturant ID
+     * GET|HEAD /foods
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function fooditem(Request $request)
+    {     
+            $input = $request->all();
+        try{
+            
+            $foods = $this->foodRepository->where('restaurant_id',$input['restaurant_id'])->pluck('name', 'id');
+
+        } catch (RepositoryException $e) {
+            return $this->sendError($e->getMessage());
+        }
+
+        return $this->sendResponse($foods->toArray(), 'Foods retrieved successfully');
+    }
+
+/* Tanmaya create function End*/
+
+    
+     /* Tanmaya create function start*/
+    /**
+     * Display a listing of the Food by resturant ID
+     * GET|HEAD /foods
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function fooditem(Request $request)
+    {     
+            $input = $request->all();
+        try{
+            
+            $foods = $this->foodRepository->where('restaurant_id',$input['restaurant_id'])->pluck('name', 'id');
+
+        } catch (RepositoryException $e) {
+            return $this->sendError($e->getMessage());
+        }
+
+        return $this->sendResponse($foods->toArray(), 'Foods retrieved successfully');
+    }
+
+/* Tanmaya create function End*/
 
     /**
      * Display a listing of the Food.
