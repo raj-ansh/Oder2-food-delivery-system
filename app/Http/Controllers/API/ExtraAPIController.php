@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Response;
 use Prettus\Repository\Exceptions\RepositoryException;
 use Flash;
 
+use Prettus\Validator\Exceptions\ValidatorException;
+use App\Repositories\CustomFieldRepository;
+use App\Repositories\UploadRepository;
+
 /**
  * Class ExtraController
  * @package App\Http\Controllers\API
@@ -23,9 +27,18 @@ class ExtraAPIController extends Controller
     /** @var  ExtraRepository */
     private $extraRepository;
 
-    public function __construct(ExtraRepository $extraRepo)
+     */
+    private $customFieldRepository;
+    /**
+     * @var UploadRepository
+     */
+    private $uploadRepository;
+
+    public function __construct(ExtraRepository $extraRepo,CustomFieldRepository $customFieldRepo, UploadRepository $uploadRepo)
     {
         $this->extraRepository = $extraRepo;
+        $this->customFieldRepository = $customFieldRepo;
+        $this->uploadRepository = $uploadRepo;
     }
 
     /**
