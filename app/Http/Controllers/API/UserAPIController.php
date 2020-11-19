@@ -95,6 +95,39 @@ class UserAPIController extends Controller
         return $this->sendResponse($user, 'User retrieved successfully');
     }
 
+    /* Tanmaya create function start*/
+    function manager(Request $request)
+    {
+        try {
+            $this->validate($request, [
+                'name' => 'required',
+                'email' => 'required|unique:users|email',
+                'password' => 'required',
+            ]);
+            $user = new User;
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->device_token = $request->input('device_token', '');
+            $user->password = Hash::make($request->input('password'));
+            $user->api_token = str_random(60);
+            $user->save();
+
+            $defaultRoles = $this->roleRepository->findByField('name', 'manager');
+            $defaultRoles = $defaultRoles->pluck('name')->toArray();
+            $user->assignRole($defaultRoles);
+
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return $this->sendError($e->getMessage(), 401);
+        }
+
+
+        return $this->sendResponse($user, 'User retrieved successfully');
+    }
+
+    /* Tanmaya create function End*/
+
+
     function logout(Request $request)
     {
         $user = $this->userRepository->findByField('api_token', $request->input('api_token'))->first();

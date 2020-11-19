@@ -43,6 +43,12 @@ Route::get('user', 'API\UserAPIController@user');
 Route::get('logout', 'API\UserAPIController@logout');
 Route::get('settings', 'API\UserAPIController@settings');
 
+/* Tanmaya create function start*/
+Route::post('manager', 'API\UserAPIController@manager');
+Route::post('fooditem', 'API\FoodAPIController@fooditem');
+/* Tanmaya create function End*/
+
+
 Route::resource('cuisines', 'API\CuisineAPIController');
 Route::resource('categories', 'API\CategoryAPIController');
 Route::resource('restaurants', 'API\RestaurantAPIController');
