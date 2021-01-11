@@ -6,7 +6,7 @@
 <div class="form-group row ">
   {!! Form::label('name', trans("lang.cuisine_name"), ['class' => 'col-3 control-label text-right']) !!}
   <div class="col-9">
-    {!! Form::text('name', null,  ['class' => 'form-control','placeholder'=>  trans("lang.cuisine_name_placeholder")]) !!}
+    {!! Form::text('name', '20',  ['class' => 'form-control','placeholder'=>  trans("lang.cuisine_name_placeholder")]) !!}
     <div class="form-text text-muted">
       {{ trans("lang.cuisine_name_help") }}
     </div>

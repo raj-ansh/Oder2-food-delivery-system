@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Models\Contry;
+use App\Models\Businesshead;
 use App\Models\User;
 use InfyOm\Generator\Common\BaseRepository;
 
@@ -37,4 +39,9 @@ class UserRepository extends BaseRepository
     {
         return User::class;
     }
+
+    public function getBusinessHeads($user_id){
+        return $row = Contry::query()->where('user_id',$user_id)->get();
+    } 
+    
 }

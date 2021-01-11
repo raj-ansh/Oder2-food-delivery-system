@@ -70,6 +70,9 @@ class Restaurant extends Model implements HasMedia
         'closed',
         'information',
         'active',
+        'is_popular',
+        'is_safety',
+        'is_most_popular'
     ];
 
     /**
@@ -93,7 +96,10 @@ class Restaurant extends Model implements HasMedia
         'available_for_delivery'=>'boolean',
         'closed'=>'boolean',
         'information' => 'string',
-        'active' =>'boolean'
+        'active' =>'boolean',
+        'is_popular'=> 'integer',
+        'is_safety'=> 'integer',
+        'is_most_popular'=> 'integer'
     ];
 
     /**

@@ -13,9 +13,9 @@ use InfyOm\Generator\Common\BaseRepository;
  * @method Gallery findWithoutFail($id, $columns = ['*'])
  * @method Gallery find($id, $columns = ['*'])
  * @method Gallery first($columns = ['*'])
-*/
-class GalleryRepository extends BaseRepository
-{
+ */
+class GalleryRepository extends BaseRepository {
+
     /**
      * @var array
      */
@@ -26,9 +26,9 @@ class GalleryRepository extends BaseRepository
 
     /**
      * Configure the Model
-     **/
-    public function model()
-    {
+     * */
+    public function model() {
         return Gallery::class;
     }
+
 }

@@ -118,6 +118,41 @@
             </div>
         </div>
     </div>
+    
+    <!-- 'Boolean popular Field' -->
+    <div class="form-group row ">
+        {!! Form::label('popular', trans("lang.restaurant_popular"),['class' => 'col-3 control-label text-right']) !!}
+        <div class="checkbox icheck">
+            <label class="col-9 ml-2 form-check-inline">
+                {!! Form::hidden('is_popular', 0) !!}
+                {!! Form::checkbox('is_popular', 1, null) !!}
+            </label>
+        </div>
+    </div>
+    
+    <!-- 'Boolean most popular Field' -->
+    <div class="form-group row ">
+        {!! Form::label('popular', trans("lang.restaurant_most_popular"),['class' => 'col-3 control-label text-right']) !!}
+        <div class="checkbox icheck">
+            <label class="col-9 ml-2 form-check-inline">
+                {!! Form::hidden('is_most_popular', 0) !!}
+                {!! Form::checkbox('is_most_popular', 1, null) !!}
+            </label>
+        </div>
+    </div>
+    
+    <!-- 'Boolean safety Field' -->
+    <div class="form-group row ">
+        {!! Form::label('safety', trans("lang.restaurant_safety"),['class' => 'col-3 control-label text-right']) !!}
+        <div class="checkbox icheck">
+            <label class="col-9 ml-2 form-check-inline">
+                {!! Form::hidden('is_safety', 0) !!}
+                {!! Form::checkbox('is_safety', 1, null) !!}
+            </label>
+        </div>
+    </div>
+    
+    
     <!-- 'Boolean closed Field' -->
     <div class="form-group row ">
         {!! Form::label('closed', trans("lang.restaurant_closed"),['class' => 'col-3 control-label text-right']) !!}

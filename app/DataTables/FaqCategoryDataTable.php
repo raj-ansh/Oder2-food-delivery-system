@@ -25,15 +25,10 @@ class FaqCategoryDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
         $columns = array_column($this->getColumns(), 'data');
-        $dataTable = $dataTable
-            
-            ->editColumn('updated_at',function($faq_category){
-    return getDateColumn($faq_category,'updated_at');
-})
-            
-            
-            ->addColumn('action', 'faq_categories.datatables_actions')
-            ->rawColumns(array_merge($columns, ['action']));
+        $dataTable = $dataTable->editColumn('updated_at',function($faq_category){
+            return getDateColumn($faq_category,'updated_at');
+        })->addColumn('action', 'faq_categories.datatables_actions')
+        ->rawColumns(array_merge($columns, ['action']));
 
         return $dataTable;
     }

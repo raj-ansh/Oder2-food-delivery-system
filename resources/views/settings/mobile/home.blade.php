@@ -48,6 +48,8 @@
                         'popular' => trans('lang.app_setting_mobile_popular'),
                         'recent_reviews_heading' => trans('lang.app_setting_mobile_recent_reviews_heading'),
                         'recent_reviews' => trans('lang.app_setting_mobile_recent_reviews'),
+                        'cuisine_heading' => trans('lang.app_setting_mobile_recent_reviews_heading'),
+                        'cuisine' => trans('lang.app_setting_mobile_recent_reviews'),
                         ]
                         , setting('home_section_'.$i,'empty'), ['class' => 'select2 form-control']) !!}
                         <div class="form-text text-muted">{{ trans("lang.app_setting_mobile_section_help") }}</div>

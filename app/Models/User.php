@@ -147,7 +147,7 @@ class User extends Authenticatable implements HasMedia
         }
         $array = $this->customFieldsValues()
             ->join('custom_fields', 'custom_fields.id', '=', 'custom_field_values.custom_field_id')
-//            ->where('custom_fields.in_table', '=', true)
+           // ->where('custom_fields.in_table', '=', true)
                 ->select(['value','view','name'])
             ->get()->toArray();
 

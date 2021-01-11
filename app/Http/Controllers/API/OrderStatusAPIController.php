@@ -66,6 +66,8 @@ class OrderStatusAPIController extends Controller
         if (empty($orderStatus)) {
             return $this->sendError('Order Status not found');
         }
+        
+        
 
         return $this->sendResponse($orderStatus->toArray(), 'Order Status retrieved successfully');
     }

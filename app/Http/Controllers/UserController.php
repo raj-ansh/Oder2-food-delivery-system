@@ -18,6 +18,8 @@ use App\Repositories\UploadRepository;
 use App\Repositories\UserRepository;
 use Flash;
 use Illuminate\Http\Request;
+use App\Mail\RetaurentOwner;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Response;
@@ -69,6 +71,7 @@ class UserController extends Controller
     public function profile()
     {
         $user = $this->userRepository->findWithoutFail(auth()->id());
+        
         unset($user->password);
         $customFields = false;
         $role = $this->roleRepository->pluck('name', 'name');
@@ -137,6 +140,7 @@ class UserController extends Controller
                 $mediaItem->copy($user, 'avatar');
             }
             event(new UserRoleChangedEvent($user));
+            Mail::to($user->email)->send(new RetaurentOwner());
         } catch (ValidatorException $e) {
             Flash::error($e->getMessage());
         }

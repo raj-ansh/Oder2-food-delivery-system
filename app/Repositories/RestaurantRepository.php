@@ -64,5 +64,11 @@ class RestaurantRepository extends BaseRepository implements CacheableInterface
             ->where('user_restaurants.user_id', auth()->id())
             ->where('restaurants.active','=','1')->get();
     }
+    
+    public function provideGiftcardRestaurants($giftcard_id){
+        return Restaurant::join('restaurent_giftcards','restaurent_giftcards.restaurant_id','=','restaurants.id')
+                ->where('restaurent_giftcards.giftcard_id',$giftcard_id)
+                ->get->toArray();
+    }
 
 }

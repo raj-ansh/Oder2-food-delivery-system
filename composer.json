@@ -9,7 +9,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "anlutro/l4-settings": "^0.7.3",
-        "barryvdh/laravel-dompdf": "^0.8.2",
+        "barryvdh/laravel-dompdf": "^0.9.0",
         "benwilkins/laravel-fcm-notification": "^4.0",
         "caouecs/laravel-lang": "~3.0",
         "doctrine/dbal": "^2.7",

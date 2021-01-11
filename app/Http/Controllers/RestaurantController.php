@@ -122,8 +122,13 @@ class RestaurantController extends Controller
             $input['users'] = [auth()->id()];
         }
         $customFields = $this->customFieldRepository->findByField('custom_field_model', $this->restaurantRepository->model());
+        
+        
         try {
             $restaurant = $this->restaurantRepository->create($input);
+           
+            
+            
             $restaurant->customFieldsValues()->createMany(getCustomFieldsValues($customFields, $request));
             if (isset($input['image']) && $input['image']) {
                 $cacheUpload = $this->uploadRepository->getByUuid($input['image']);

@@ -17,8 +17,11 @@
 |
 */
 
+// Route::get('/', 'HomeController@index')->name('home');
 Route::get('login/{service}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{service}/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('send/notify','TestNotificationController@send');
+
 Auth::routes();
 
 Route::get('payments/failed', 'PayPalController@index')->name('payments.failed');
@@ -32,6 +35,9 @@ Route::get('payments/paypal', 'PayPalController@index')->name('paypal.index');
 
 Route::get('firebase/sw-js', 'AppSettingController@initFirebase');
 
+Route::get('send/notification','PushNotificationController@send');
+Route::get('test/notification','PushNotificationController@test');
+
 
 Route::get('storage/app/public/{id}/{conversion}/{filename?}', 'UploadController@storage');
 Route::middleware('auth')->group(function () {
@@ -43,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::post('users/remove-media', 'UserController@removeMedia');
     Route::resource('users', 'UserController');
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('dashboard/marketing', 'DashboardController@index')->name('dashboard.marketing');
 
     Route::group(['middleware' => ['permission:medias']], function () {
         Route::get('uploads/all/{collection?}', 'UploadController@all');
@@ -187,5 +194,18 @@ Route::middleware('auth')->group(function () {
     Route::resource('slides', 'SlideController')->except([
         'show'
     ]);
-});
 
+    // Custom Menus
+    Route::resource('insurance', 'InsuranceController');
+    Route::resource('services', 'ServicesController');
+    Route::resource('advertisement', 'AdvertisementController');
+
+    Route::resource('country','ContryController');
+    Route::resource('regional_manager','RegManagerController');
+    Route::resource('supplyhead','SupplyheadController');
+    Route::resource('businesshead','BusinessheadController');
+    Route::resource('servicebdm','ServicecebdmController');
+    Route::resource('bdm','bdmController');
+    Route::resource('seniorbde','SeniorbdeController');
+    Route::resource('bde','BdeController');
+});

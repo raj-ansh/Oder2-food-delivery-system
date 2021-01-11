@@ -52,6 +52,7 @@ class UserAPIController extends Controller
                 $user = auth()->user();
                 $user->device_token = $request->input('device_token', '');
                 $user->save();
+                
                 return $this->sendResponse($user, 'User retrieved successfully');
             }
         } catch (\Exception $e) {
